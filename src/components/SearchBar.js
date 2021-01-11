@@ -10,6 +10,7 @@ class SearchBar extends Component {
     e.preventDefault();
 
     // to do. make sure you call back from parent
+    return this.props.onFormSubmit(this.state.term);
   };
 
   render() {
