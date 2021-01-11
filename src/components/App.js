@@ -7,13 +7,20 @@ import VideoDetail from "./VideoDetail";
 class App extends Component {
   state = { videos: [], selectedVideo: null };
 
+  componentDidMount(){
+      this.onTermSubmit('buildings')
+  }
+
   onTermSubmit = async (term) => {
     const result = await youtube.get("/search", {
       params: {
         q: term,
       },
     });
-    this.setState({ videos: result.data.items });
+    this.setState({
+      videos: result.data.items,
+      selectedVideo: result.data.items[0],
+    });
   };
 
   onVideoSelect = (video) => {
